@@ -1,10 +1,17 @@
 /* Общие стили */
-body {
+html, body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    height: 100%;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container {
@@ -12,10 +19,6 @@ body {
     margin: 0 auto;
     background-color: #fff;
     padding: 20px;
-}
-
-h1, h2, h3 {
-    margin-top: 0;
 }
 
 ul {
@@ -40,6 +43,12 @@ header a {
     color: #fff;
 }
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /* Навигационное меню */
 nav {
     display: flex;
@@ -62,6 +71,7 @@ nav a:hover {
 /* Основной контент */
 main {
     padding: 20px;
+    flex-grow: 1;
 }
 
 /* Футер */
@@ -69,7 +79,7 @@ footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem;
+    padding: 20px;
     margin-top: 1rem;
 }
 
@@ -146,4 +156,31 @@ form input[type="submit"]:hover {
     width: 100%;
     max-width: 300px;
     margin-bottom: 1rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.auth-links {
+    position: absolute;
+    right: 10px;
+}
+
+.auth-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.auth-links span {
+    color: #fff;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
 }
