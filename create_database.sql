@@ -53,6 +53,14 @@ CREATE TABLE useful_information (
   image_url VARCHAR(255)
 );
 
+CREATE TABLE articles (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  title varchar(255) NOT NULL,
+  content text NOT NULL,
+  created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE news (
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,

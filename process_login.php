@@ -16,6 +16,7 @@ if ($result->num_rows > 0) {
     if (password_verify($password, $row['password'])) {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
+        $_SESSION['is_admin'] = ($row['role'] == 'admin');
         header("Location: index.php");
         exit;
     } else {
