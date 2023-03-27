@@ -9,10 +9,6 @@ CREATE TABLE users (
   UNIQUE KEY unique_email (email)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO childcare.users
-(username, password, email, `role`)
-VALUES('admin', 'admin', 'admin@example.com', 'admin');
-
 CREATE TABLE employees (
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
