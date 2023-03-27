@@ -129,18 +129,54 @@ form input[type="submit"]:hover {
     padding: 2rem;
 }
 
-.staff img,
-.gallery img {
+.staff img {
     width: 100%;
     max-width: 200px;
     margin-bottom: 1rem;
 }
 
-.gallery-video {
+/* Основной контейнер галереи */
+.gallery-container {
+    column-count: 4;
+    column-gap: 10px;
     width: 100%;
-    max-width: 500px;
-    margin-bottom: 1rem;
-}
+  }
+  
+  /* Элементы плитки (карточки с изображениями/видео) */
+  .gallery-item {
+    display: inline-block;
+    margin: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  /* Изображения и видео внутри элементов плитки */
+  .gallery-item img,
+  .gallery-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Адаптивность для разных размеров экрана */
+  @media screen and (max-width: 1024px) {
+    .gallery-container {
+      column-count: 3;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .gallery-container {
+      column-count: 2;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .gallery-container {
+      column-count: 1;
+    }
+  }  
 
 .parent-info {
     display: flex;

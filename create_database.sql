@@ -85,3 +85,9 @@ CREATE TABLE staff (
     bio TEXT
 );
 
+CREATE TABLE media (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type ENUM('photo', 'video') NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    file_name VARCHAR(255) NOT NULL
+);

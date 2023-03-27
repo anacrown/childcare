@@ -1,33 +1,34 @@
-<?php include 'header.php'; ?>
+<?php
+include_once 'header.php';
 
-<main>
-    <h2>Галерея</h2>
-    <p>Здесь представлены фотографии и видео из нашего детского сада.</p>
-    
-    <div class="gallery">
-        <!-- Фотографии -->
-        <div class="photo">
-            <h3>Фотографии</h3>
-            <img src="path/to/photo1.jpg" alt="Описание фото 1">
-            <img src="path/to/photo2.jpg" alt="Описание фото 2">
-            <img src="path/to/photo3.jpg" alt="Описание фото 3">
-            <!-- Добавьте больше фотографий по аналогии -->
-        </div>
-        
-        <!-- Видео -->
-        <div class="video">
-            <h3>Видео</h3>
-            <video class="gallery-video" controls>
-                <source src="path/to/video1.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
-            <video class="gallery-video" controls>
-                <source src="path/to/video2.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
-            </video>
-            <!-- Добавьте больше видео по аналогии -->
-        </div>
-    </div>
-</main>
+$stmt = $conn->prepare("SELECT * FROM media");
+$stmt->execute();
+$result = $stmt->get_result();
 
-<?php include 'footer.php'; ?>
+?>
+
+<!-- Gallery Content -->
+<div class="gallery-container">
+    <?php
+    while ($row = $result->fetch_assoc()) {
+        echo "<div class='gallery-item'>";
+        echo "<h3>" . htmlspecialchars($row['title']) . "</h3>";
+        if ($row['type'] == 'photo') {
+            echo "<img src='uploads/" . $row['file_name'] . "' alt='" . htmlspecialchars($row['title']) . "'>";
+        } else {
+            echo "<video controls src='uploads/" . $row['file_name'] . "'></video>";
+        }
+        if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
+            echo "<a href='delete_media.php?id=" . $row['id'] . "'>Удалить</a>";
+        }
+        echo "</div>";
+    }
+    ?>
+</div>
+
+<?php
+if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
+    include_once 'add_media_form.php';
+}
+include_once 'footer.php';
+?>
