@@ -2,11 +2,12 @@
 // Настройки базы данных
 $db_host     = "localhost";  // Адрес сервера MySQL (обычно "localhost")
 $db_username = "root";       // Имя пользователя для подключения к серверу MySQL (по умолчанию "root")
-$db_password = "";           // Пароль пользователя для подключения к серверу MySQL (по умолчанию пустой)
+$db_password = "root";           // Пароль пользователя для подключения к серверу MySQL (по умолчанию пустой)
 $db_name     = "childcare";  // Имя базы данных
+$port = 8889;
 
 // Создание подключения к базе данных
-$conn = mysqli_connect($db_host, $db_username, $db_password, $db_name);
+$conn = mysqli_connect($db_host, $db_username, $db_password, $db_name, $port);
 
 // Проверка подключения
 if (!$conn) {
